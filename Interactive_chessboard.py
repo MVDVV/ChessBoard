@@ -11,8 +11,6 @@
     *TO SEE BOARD , ENTER THE EXAMPLE INPUT GIVEN ABOVE
     NOTE: There is no mechanism for check or castling present.
 """
-
-from functools import partial
 colour = False
 chess_bd = []
 
@@ -283,7 +281,19 @@ def move_king(start_x_coord,start_y_coord,end_x_coord,end_y_coord,colour):
     if [-end_y_coord,end_x_coord] in king_moves:
         chess_bd[-end_y_coord][end_x_coord],chess_bd[-(start_y_coord)][start_x_coord] = chess_bd[-(start_y_coord)][start_x_coord],[]
         return "done"
-
+def CALL(totem,start_x_coord,start_y_coord,end_x_coord,end_y_coord,colour):
+	if totem = "move_pawn":
+		move_pawn(start_x_coord,start_y_coord,end_x_coord,end_y_coord,colour)
+	if totem  = "move_knight":
+		move_knight(start_x_coord,start_y_coord,end_x_coord,end_y_coord,colour)
+	if totem = "move_bishop":
+		move_bishop(start_x_coord,start_y_coord,end_x_coord,end_y_coord,colour)
+	if totem = "move_rook":
+		move_rook(start_x_coord,start_y_coord,end_x_coord,end_y_coord,colour)
+	if totem = "move_queen":
+		move_queen(start_x_coord,start_y_coord,end_x_coord,end_y_coord,colour)
+	if totem = "move_king"
+		move_king(start_x_coord,start_y_coord,end_x_coord,end_y_coord,colour)
 def move_piece():
     pieces = {"p":move_pawn,"n":move_knight,"b":move_bishop,"r":move_rook,"q":move_queen,"k":move_king}
     x = str(input("Enter piece and startpos :"))
@@ -308,8 +318,8 @@ def move_piece():
     
     if x[0] in pieces:
         global colour
-        call = partial(pieces[x[0]],start_x_coord,start_y_coord,end_x_coord,end_y_coord,colour)
-        if call() == "done":
+	    totem = pieces[x[0]]
+        if CALL(totem,start_x_coord,start_y_coord,end_x_coord,end_y_coord,colour) == "done":
             colour = not(colour)
             print("-------------MOVE DONE----------")
         else:
