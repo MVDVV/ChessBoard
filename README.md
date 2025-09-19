@@ -1,2 +1,2 @@
 # ChessBoard
-a chessboard from scratch
+a chessboard in python
